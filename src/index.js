@@ -1,12 +1,38 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+// src/index.js
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
+import { Auth0Provider } from "./auth/AuthProvider";
+import config from "./auth/auth_config.json";
+// import {ClientContext, GraphQLClient} from 'graphql-hooks'
+import theme from "./style/theme";
+import {ThemeProvider} from "styled-components";
+import GlobalStyle from "./style/GlobalStyle";
+import GraphQLProvider from "./data/GraphQLProvider";
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+// const gql_configs = {
+// 	url: 'https://grabalunch.herokuapp.com/v1/graphql'
+// };
+// const client = new GraphQLClient(gql_configs);
+
+
+ReactDOM.render(
+	<Auth0Provider
+		domain={config.domain}
+		client_id={config.clientId}
+		redirect_uri={window.location.origin}
+	>
+		<GlobalStyle/>
+		<GraphQLProvider>
+			<ThemeProvider theme={theme}>
+				<App />
+			</ThemeProvider>
+		</GraphQLProvider>
+
+	</Auth0Provider>,
+	document.getElementById("root")
+);
+
 serviceWorker.unregister();

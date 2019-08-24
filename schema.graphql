@@ -1,0 +1,1129 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: query_root
+    mutation: mutation_root
+    subscription: subscription_root
+}
+
+"columns and relationships of \"meal\""
+type meal {
+    description: String!
+    host_id: Int!
+    id: Int!
+    "An object relationship"
+    place: place!
+    place_id: Int!
+    "An object relationship"
+    profile: profile!
+}
+
+"aggregated selection of \"meal\""
+type meal_aggregate {
+    aggregate: meal_aggregate_fields
+    nodes: [meal!]!
+}
+
+"aggregate fields of \"meal\""
+type meal_aggregate_fields {
+    avg: meal_avg_fields
+    count(columns: [meal_select_column!], distinct: Boolean): Int
+    max: meal_max_fields
+    min: meal_min_fields
+    stddev: meal_stddev_fields
+    stddev_pop: meal_stddev_pop_fields
+    stddev_samp: meal_stddev_samp_fields
+    sum: meal_sum_fields
+    var_pop: meal_var_pop_fields
+    var_samp: meal_var_samp_fields
+    variance: meal_variance_fields
+}
+
+"aggregate avg on columns"
+type meal_avg_fields {
+    host_id: Float
+    id: Float
+    place_id: Float
+}
+
+"aggregate max on columns"
+type meal_max_fields {
+    description: String
+    host_id: Int
+    id: Int
+    place_id: Int
+}
+
+"aggregate min on columns"
+type meal_min_fields {
+    description: String
+    host_id: Int
+    id: Int
+    place_id: Int
+}
+
+"response of any mutation on the table \"meal\""
+type meal_mutation_response {
+    "number of affected rows by the mutation"
+    affected_rows: Int!
+    "data of the affected rows by the mutation"
+    returning: [meal!]!
+}
+
+"aggregate stddev on columns"
+type meal_stddev_fields {
+    host_id: Float
+    id: Float
+    place_id: Float
+}
+
+"aggregate stddev_pop on columns"
+type meal_stddev_pop_fields {
+    host_id: Float
+    id: Float
+    place_id: Float
+}
+
+"aggregate stddev_samp on columns"
+type meal_stddev_samp_fields {
+    host_id: Float
+    id: Float
+    place_id: Float
+}
+
+"aggregate sum on columns"
+type meal_sum_fields {
+    host_id: Int
+    id: Int
+    place_id: Int
+}
+
+"aggregate var_pop on columns"
+type meal_var_pop_fields {
+    host_id: Float
+    id: Float
+    place_id: Float
+}
+
+"aggregate var_samp on columns"
+type meal_var_samp_fields {
+    host_id: Float
+    id: Float
+    place_id: Float
+}
+
+"aggregate variance on columns"
+type meal_variance_fields {
+    host_id: Float
+    id: Float
+    place_id: Float
+}
+
+"mutation root"
+type mutation_root {
+    "delete data from the table: \"meal\""
+    delete_meal(
+        #filter the rows which have to be deleted
+        where: meal_bool_exp!
+    ): meal_mutation_response
+    "delete data from the table: \"place\""
+    delete_place(
+        #filter the rows which have to be deleted
+        where: place_bool_exp!
+    ): place_mutation_response
+    "delete data from the table: \"profile\""
+    delete_profile(
+        #filter the rows which have to be deleted
+        where: profile_bool_exp!
+    ): profile_mutation_response
+    "insert data into the table: \"meal\""
+    insert_meal(
+        #the rows to be inserted
+        objects: [meal_insert_input!]!,
+        #on conflict condition
+        on_conflict: meal_on_conflict
+    ): meal_mutation_response
+    "insert data into the table: \"place\""
+    insert_place(
+        #the rows to be inserted
+        objects: [place_insert_input!]!,
+        #on conflict condition
+        on_conflict: place_on_conflict
+    ): place_mutation_response
+    "insert data into the table: \"profile\""
+    insert_profile(
+        #the rows to be inserted
+        objects: [profile_insert_input!]!,
+        #on conflict condition
+        on_conflict: profile_on_conflict
+    ): profile_mutation_response
+    "update data of the table: \"meal\""
+    update_meal(
+        #increments the integer columns with given value of the filtered values
+        _inc: meal_inc_input,
+        #sets the columns of the filtered rows to the given values
+        _set: meal_set_input,
+        #filter the rows which have to be updated
+        where: meal_bool_exp!
+    ): meal_mutation_response
+    "update data of the table: \"place\""
+    update_place(
+        #increments the integer columns with given value of the filtered values
+        _inc: place_inc_input,
+        #sets the columns of the filtered rows to the given values
+        _set: place_set_input,
+        #filter the rows which have to be updated
+        where: place_bool_exp!
+    ): place_mutation_response
+    "update data of the table: \"profile\""
+    update_profile(
+        #increments the integer columns with given value of the filtered values
+        _inc: profile_inc_input,
+        #sets the columns of the filtered rows to the given values
+        _set: profile_set_input,
+        #filter the rows which have to be updated
+        where: profile_bool_exp!
+    ): profile_mutation_response
+}
+
+"columns and relationships of \"place\""
+type place {
+    id: Int!
+    "An array relationship"
+    meals(
+        #distinct select on columns
+        distinct_on: [meal_select_column!],
+        #limit the nuber of rows returned
+        limit: Int,
+        #skip the first n rows. Use only with order_by
+        offset: Int,
+        #sort the rows by one or more columns
+        order_by: [meal_order_by!],
+        #filter the rows returned
+        where: meal_bool_exp
+    ): [meal!]!
+    "An aggregated array relationship"
+    meals_aggregate(
+        #distinct select on columns
+        distinct_on: [meal_select_column!],
+        #limit the nuber of rows returned
+        limit: Int,
+        #skip the first n rows. Use only with order_by
+        offset: Int,
+        #sort the rows by one or more columns
+        order_by: [meal_order_by!],
+        #filter the rows returned
+        where: meal_bool_exp
+    ): meal_aggregate!
+    name: String!
+}
+
+"aggregated selection of \"place\""
+type place_aggregate {
+    aggregate: place_aggregate_fields
+    nodes: [place!]!
+}
+
+"aggregate fields of \"place\""
+type place_aggregate_fields {
+    avg: place_avg_fields
+    count(columns: [place_select_column!], distinct: Boolean): Int
+    max: place_max_fields
+    min: place_min_fields
+    stddev: place_stddev_fields
+    stddev_pop: place_stddev_pop_fields
+    stddev_samp: place_stddev_samp_fields
+    sum: place_sum_fields
+    var_pop: place_var_pop_fields
+    var_samp: place_var_samp_fields
+    variance: place_variance_fields
+}
+
+"aggregate avg on columns"
+type place_avg_fields {
+    id: Float
+}
+
+"aggregate max on columns"
+type place_max_fields {
+    id: Int
+    name: String
+}
+
+"aggregate min on columns"
+type place_min_fields {
+    id: Int
+    name: String
+}
+
+"response of any mutation on the table \"place\""
+type place_mutation_response {
+    "number of affected rows by the mutation"
+    affected_rows: Int!
+    "data of the affected rows by the mutation"
+    returning: [place!]!
+}
+
+"aggregate stddev on columns"
+type place_stddev_fields {
+    id: Float
+}
+
+"aggregate stddev_pop on columns"
+type place_stddev_pop_fields {
+    id: Float
+}
+
+"aggregate stddev_samp on columns"
+type place_stddev_samp_fields {
+    id: Float
+}
+
+"aggregate sum on columns"
+type place_sum_fields {
+    id: Int
+}
+
+"aggregate var_pop on columns"
+type place_var_pop_fields {
+    id: Float
+}
+
+"aggregate var_samp on columns"
+type place_var_samp_fields {
+    id: Float
+}
+
+"aggregate variance on columns"
+type place_variance_fields {
+    id: Float
+}
+
+"columns and relationships of \"profile\""
+type profile {
+    auth0_id: String!
+    id: Int!
+    "An array relationship"
+    meals(
+        #distinct select on columns
+        distinct_on: [meal_select_column!],
+        #limit the nuber of rows returned
+        limit: Int,
+        #skip the first n rows. Use only with order_by
+        offset: Int,
+        #sort the rows by one or more columns
+        order_by: [meal_order_by!],
+        #filter the rows returned
+        where: meal_bool_exp
+    ): [meal!]!
+    "An aggregated array relationship"
+    meals_aggregate(
+        #distinct select on columns
+        distinct_on: [meal_select_column!],
+        #limit the nuber of rows returned
+        limit: Int,
+        #skip the first n rows. Use only with order_by
+        offset: Int,
+        #sort the rows by one or more columns
+        order_by: [meal_order_by!],
+        #filter the rows returned
+        where: meal_bool_exp
+    ): meal_aggregate!
+    username: String!
+}
+
+"aggregated selection of \"profile\""
+type profile_aggregate {
+    aggregate: profile_aggregate_fields
+    nodes: [profile!]!
+}
+
+"aggregate fields of \"profile\""
+type profile_aggregate_fields {
+    avg: profile_avg_fields
+    count(columns: [profile_select_column!], distinct: Boolean): Int
+    max: profile_max_fields
+    min: profile_min_fields
+    stddev: profile_stddev_fields
+    stddev_pop: profile_stddev_pop_fields
+    stddev_samp: profile_stddev_samp_fields
+    sum: profile_sum_fields
+    var_pop: profile_var_pop_fields
+    var_samp: profile_var_samp_fields
+    variance: profile_variance_fields
+}
+
+"aggregate avg on columns"
+type profile_avg_fields {
+    id: Float
+}
+
+"aggregate max on columns"
+type profile_max_fields {
+    auth0_id: String
+    id: Int
+    username: String
+}
+
+"aggregate min on columns"
+type profile_min_fields {
+    auth0_id: String
+    id: Int
+    username: String
+}
+
+"response of any mutation on the table \"profile\""
+type profile_mutation_response {
+    "number of affected rows by the mutation"
+    affected_rows: Int!
+    "data of the affected rows by the mutation"
+    returning: [profile!]!
+}
+
+"aggregate stddev on columns"
+type profile_stddev_fields {
+    id: Float
+}
+
+"aggregate stddev_pop on columns"
+type profile_stddev_pop_fields {
+    id: Float
+}
+
+"aggregate stddev_samp on columns"
+type profile_stddev_samp_fields {
+    id: Float
+}
+
+"aggregate sum on columns"
+type profile_sum_fields {
+    id: Int
+}
+
+"aggregate var_pop on columns"
+type profile_var_pop_fields {
+    id: Float
+}
+
+"aggregate var_samp on columns"
+type profile_var_samp_fields {
+    id: Float
+}
+
+"aggregate variance on columns"
+type profile_variance_fields {
+    id: Float
+}
+
+"query root"
+type query_root {
+    "fetch data from the table: \"meal\""
+    meal(
+        #distinct select on columns
+        distinct_on: [meal_select_column!],
+        #limit the nuber of rows returned
+        limit: Int,
+        #skip the first n rows. Use only with order_by
+        offset: Int,
+        #sort the rows by one or more columns
+        order_by: [meal_order_by!],
+        #filter the rows returned
+        where: meal_bool_exp
+    ): [meal!]!
+    "fetch aggregated fields from the table: \"meal\""
+    meal_aggregate(
+        #distinct select on columns
+        distinct_on: [meal_select_column!],
+        #limit the nuber of rows returned
+        limit: Int,
+        #skip the first n rows. Use only with order_by
+        offset: Int,
+        #sort the rows by one or more columns
+        order_by: [meal_order_by!],
+        #filter the rows returned
+        where: meal_bool_exp
+    ): meal_aggregate!
+    "fetch data from the table: \"meal\" using primary key columns"
+    meal_by_pk(id: Int!): meal
+    "fetch data from the table: \"place\""
+    place(
+        #distinct select on columns
+        distinct_on: [place_select_column!],
+        #limit the nuber of rows returned
+        limit: Int,
+        #skip the first n rows. Use only with order_by
+        offset: Int,
+        #sort the rows by one or more columns
+        order_by: [place_order_by!],
+        #filter the rows returned
+        where: place_bool_exp
+    ): [place!]!
+    "fetch aggregated fields from the table: \"place\""
+    place_aggregate(
+        #distinct select on columns
+        distinct_on: [place_select_column!],
+        #limit the nuber of rows returned
+        limit: Int,
+        #skip the first n rows. Use only with order_by
+        offset: Int,
+        #sort the rows by one or more columns
+        order_by: [place_order_by!],
+        #filter the rows returned
+        where: place_bool_exp
+    ): place_aggregate!
+    "fetch data from the table: \"place\" using primary key columns"
+    place_by_pk(id: Int!): place
+    "fetch data from the table: \"profile\""
+    profile(
+        #distinct select on columns
+        distinct_on: [profile_select_column!],
+        #limit the nuber of rows returned
+        limit: Int,
+        #skip the first n rows. Use only with order_by
+        offset: Int,
+        #sort the rows by one or more columns
+        order_by: [profile_order_by!],
+        #filter the rows returned
+        where: profile_bool_exp
+    ): [profile!]!
+    "fetch aggregated fields from the table: \"profile\""
+    profile_aggregate(
+        #distinct select on columns
+        distinct_on: [profile_select_column!],
+        #limit the nuber of rows returned
+        limit: Int,
+        #skip the first n rows. Use only with order_by
+        offset: Int,
+        #sort the rows by one or more columns
+        order_by: [profile_order_by!],
+        #filter the rows returned
+        where: profile_bool_exp
+    ): profile_aggregate!
+    "fetch data from the table: \"profile\" using primary key columns"
+    profile_by_pk(id: Int!): profile
+}
+
+"subscription root"
+type subscription_root {
+    "fetch data from the table: \"meal\""
+    meal(
+        #distinct select on columns
+        distinct_on: [meal_select_column!],
+        #limit the nuber of rows returned
+        limit: Int,
+        #skip the first n rows. Use only with order_by
+        offset: Int,
+        #sort the rows by one or more columns
+        order_by: [meal_order_by!],
+        #filter the rows returned
+        where: meal_bool_exp
+    ): [meal!]!
+    "fetch aggregated fields from the table: \"meal\""
+    meal_aggregate(
+        #distinct select on columns
+        distinct_on: [meal_select_column!],
+        #limit the nuber of rows returned
+        limit: Int,
+        #skip the first n rows. Use only with order_by
+        offset: Int,
+        #sort the rows by one or more columns
+        order_by: [meal_order_by!],
+        #filter the rows returned
+        where: meal_bool_exp
+    ): meal_aggregate!
+    "fetch data from the table: \"meal\" using primary key columns"
+    meal_by_pk(id: Int!): meal
+    "fetch data from the table: \"place\""
+    place(
+        #distinct select on columns
+        distinct_on: [place_select_column!],
+        #limit the nuber of rows returned
+        limit: Int,
+        #skip the first n rows. Use only with order_by
+        offset: Int,
+        #sort the rows by one or more columns
+        order_by: [place_order_by!],
+        #filter the rows returned
+        where: place_bool_exp
+    ): [place!]!
+    "fetch aggregated fields from the table: \"place\""
+    place_aggregate(
+        #distinct select on columns
+        distinct_on: [place_select_column!],
+        #limit the nuber of rows returned
+        limit: Int,
+        #skip the first n rows. Use only with order_by
+        offset: Int,
+        #sort the rows by one or more columns
+        order_by: [place_order_by!],
+        #filter the rows returned
+        where: place_bool_exp
+    ): place_aggregate!
+    "fetch data from the table: \"place\" using primary key columns"
+    place_by_pk(id: Int!): place
+    "fetch data from the table: \"profile\""
+    profile(
+        #distinct select on columns
+        distinct_on: [profile_select_column!],
+        #limit the nuber of rows returned
+        limit: Int,
+        #skip the first n rows. Use only with order_by
+        offset: Int,
+        #sort the rows by one or more columns
+        order_by: [profile_order_by!],
+        #filter the rows returned
+        where: profile_bool_exp
+    ): [profile!]!
+    "fetch aggregated fields from the table: \"profile\""
+    profile_aggregate(
+        #distinct select on columns
+        distinct_on: [profile_select_column!],
+        #limit the nuber of rows returned
+        limit: Int,
+        #skip the first n rows. Use only with order_by
+        offset: Int,
+        #sort the rows by one or more columns
+        order_by: [profile_order_by!],
+        #filter the rows returned
+        where: profile_bool_exp
+    ): profile_aggregate!
+    "fetch data from the table: \"profile\" using primary key columns"
+    profile_by_pk(id: Int!): profile
+}
+
+"conflict action"
+enum conflict_action {
+    #ignore the insert on this row
+    ignore
+    #update the row with the given values
+    update
+}
+
+"unique or primary key constraints on table \"meal\""
+enum meal_constraint {
+    #unique or primary key constraint
+    meal_pkey
+}
+
+"select columns of table \"meal\""
+enum meal_select_column {
+    #column name
+    description
+    #column name
+    host_id
+    #column name
+    id
+    #column name
+    place_id
+}
+
+"update columns of table \"meal\""
+enum meal_update_column {
+    #column name
+    description
+    #column name
+    host_id
+    #column name
+    id
+    #column name
+    place_id
+}
+
+"column ordering options"
+enum order_by {
+    #in the ascending order, nulls last
+    asc
+    #in the ascending order, nulls first
+    asc_nulls_first
+    #in the ascending order, nulls last
+    asc_nulls_last
+    #in the descending order, nulls first
+    desc
+    #in the descending order, nulls first
+    desc_nulls_first
+    #in the descending order, nulls last
+    desc_nulls_last
+}
+
+"unique or primary key constraints on table \"place\""
+enum place_constraint {
+    #unique or primary key constraint
+    place_name_key
+    #unique or primary key constraint
+    place_pkey
+}
+
+"select columns of table \"place\""
+enum place_select_column {
+    #column name
+    id
+    #column name
+    name
+}
+
+"update columns of table \"place\""
+enum place_update_column {
+    #column name
+    id
+    #column name
+    name
+}
+
+"unique or primary key constraints on table \"profile\""
+enum profile_constraint {
+    #unique or primary key constraint
+    profile_auth0_id_key
+    #unique or primary key constraint
+    profile_pkey
+}
+
+"select columns of table \"profile\""
+enum profile_select_column {
+    #column name
+    auth0_id
+    #column name
+    id
+    #column name
+    username
+}
+
+"update columns of table \"profile\""
+enum profile_update_column {
+    #column name
+    auth0_id
+    #column name
+    id
+    #column name
+    username
+}
+
+"expression to compare columns of type integer. All fields are combined with logical 'AND'."
+input integer_comparison_exp {
+    _eq: Int
+    _gt: Int
+    _gte: Int
+    _in: [Int]
+    _is_null: Boolean
+    _lt: Int
+    _lte: Int
+    _neq: Int
+    _nin: [Int]
+}
+
+"order by aggregate values of table \"meal\""
+input meal_aggregate_order_by {
+    avg: meal_avg_order_by
+    count: order_by
+    max: meal_max_order_by
+    min: meal_min_order_by
+    stddev: meal_stddev_order_by
+    stddev_pop: meal_stddev_pop_order_by
+    stddev_samp: meal_stddev_samp_order_by
+    sum: meal_sum_order_by
+    var_pop: meal_var_pop_order_by
+    var_samp: meal_var_samp_order_by
+    variance: meal_variance_order_by
+}
+
+"input type for inserting array relation for remote table \"meal\""
+input meal_arr_rel_insert_input {
+    data: [meal_insert_input!]!
+    on_conflict: meal_on_conflict
+}
+
+"order by avg() on columns of table \"meal\""
+input meal_avg_order_by {
+    host_id: order_by
+    id: order_by
+    place_id: order_by
+}
+
+"Boolean expression to filter rows from the table \"meal\". All fields are combined with a logical 'AND'."
+input meal_bool_exp {
+    _and: [meal_bool_exp]
+    _not: meal_bool_exp
+    _or: [meal_bool_exp]
+    description: text_comparison_exp
+    host_id: integer_comparison_exp
+    id: integer_comparison_exp
+    place: place_bool_exp
+    place_id: integer_comparison_exp
+    profile: profile_bool_exp
+}
+
+"input type for incrementing integer columne in table \"meal\""
+input meal_inc_input {
+    host_id: Int
+    id: Int
+    place_id: Int
+}
+
+"input type for inserting data into table \"meal\""
+input meal_insert_input {
+    description: String
+    host_id: Int
+    id: Int
+    place: place_obj_rel_insert_input
+    place_id: Int
+    profile: profile_obj_rel_insert_input
+}
+
+"order by max() on columns of table \"meal\""
+input meal_max_order_by {
+    description: order_by
+    host_id: order_by
+    id: order_by
+    place_id: order_by
+}
+
+"order by min() on columns of table \"meal\""
+input meal_min_order_by {
+    description: order_by
+    host_id: order_by
+    id: order_by
+    place_id: order_by
+}
+
+"input type for inserting object relation for remote table \"meal\""
+input meal_obj_rel_insert_input {
+    data: meal_insert_input!
+    on_conflict: meal_on_conflict
+}
+
+"on conflict condition type for table \"meal\""
+input meal_on_conflict {
+    constraint: meal_constraint!
+    update_columns: [meal_update_column!]!
+}
+
+"ordering options when selecting data from \"meal\""
+input meal_order_by {
+    description: order_by
+    host_id: order_by
+    id: order_by
+    place: place_order_by
+    place_id: order_by
+    profile: profile_order_by
+}
+
+"input type for updating data in table \"meal\""
+input meal_set_input {
+    description: String
+    host_id: Int
+    id: Int
+    place_id: Int
+}
+
+"order by stddev() on columns of table \"meal\""
+input meal_stddev_order_by {
+    host_id: order_by
+    id: order_by
+    place_id: order_by
+}
+
+"order by stddev_pop() on columns of table \"meal\""
+input meal_stddev_pop_order_by {
+    host_id: order_by
+    id: order_by
+    place_id: order_by
+}
+
+"order by stddev_samp() on columns of table \"meal\""
+input meal_stddev_samp_order_by {
+    host_id: order_by
+    id: order_by
+    place_id: order_by
+}
+
+"order by sum() on columns of table \"meal\""
+input meal_sum_order_by {
+    host_id: order_by
+    id: order_by
+    place_id: order_by
+}
+
+"order by var_pop() on columns of table \"meal\""
+input meal_var_pop_order_by {
+    host_id: order_by
+    id: order_by
+    place_id: order_by
+}
+
+"order by var_samp() on columns of table \"meal\""
+input meal_var_samp_order_by {
+    host_id: order_by
+    id: order_by
+    place_id: order_by
+}
+
+"order by variance() on columns of table \"meal\""
+input meal_variance_order_by {
+    host_id: order_by
+    id: order_by
+    place_id: order_by
+}
+
+"order by aggregate values of table \"place\""
+input place_aggregate_order_by {
+    avg: place_avg_order_by
+    count: order_by
+    max: place_max_order_by
+    min: place_min_order_by
+    stddev: place_stddev_order_by
+    stddev_pop: place_stddev_pop_order_by
+    stddev_samp: place_stddev_samp_order_by
+    sum: place_sum_order_by
+    var_pop: place_var_pop_order_by
+    var_samp: place_var_samp_order_by
+    variance: place_variance_order_by
+}
+
+"input type for inserting array relation for remote table \"place\""
+input place_arr_rel_insert_input {
+    data: [place_insert_input!]!
+    on_conflict: place_on_conflict
+}
+
+"order by avg() on columns of table \"place\""
+input place_avg_order_by {
+    id: order_by
+}
+
+"Boolean expression to filter rows from the table \"place\". All fields are combined with a logical 'AND'."
+input place_bool_exp {
+    _and: [place_bool_exp]
+    _not: place_bool_exp
+    _or: [place_bool_exp]
+    id: integer_comparison_exp
+    meals: meal_bool_exp
+    name: text_comparison_exp
+}
+
+"input type for incrementing integer columne in table \"place\""
+input place_inc_input {
+    id: Int
+}
+
+"input type for inserting data into table \"place\""
+input place_insert_input {
+    id: Int
+    meals: meal_arr_rel_insert_input
+    name: String
+}
+
+"order by max() on columns of table \"place\""
+input place_max_order_by {
+    id: order_by
+    name: order_by
+}
+
+"order by min() on columns of table \"place\""
+input place_min_order_by {
+    id: order_by
+    name: order_by
+}
+
+"input type for inserting object relation for remote table \"place\""
+input place_obj_rel_insert_input {
+    data: place_insert_input!
+    on_conflict: place_on_conflict
+}
+
+"on conflict condition type for table \"place\""
+input place_on_conflict {
+    constraint: place_constraint!
+    update_columns: [place_update_column!]!
+}
+
+"ordering options when selecting data from \"place\""
+input place_order_by {
+    id: order_by
+    meals_aggregate: meal_aggregate_order_by
+    name: order_by
+}
+
+"input type for updating data in table \"place\""
+input place_set_input {
+    id: Int
+    name: String
+}
+
+"order by stddev() on columns of table \"place\""
+input place_stddev_order_by {
+    id: order_by
+}
+
+"order by stddev_pop() on columns of table \"place\""
+input place_stddev_pop_order_by {
+    id: order_by
+}
+
+"order by stddev_samp() on columns of table \"place\""
+input place_stddev_samp_order_by {
+    id: order_by
+}
+
+"order by sum() on columns of table \"place\""
+input place_sum_order_by {
+    id: order_by
+}
+
+"order by var_pop() on columns of table \"place\""
+input place_var_pop_order_by {
+    id: order_by
+}
+
+"order by var_samp() on columns of table \"place\""
+input place_var_samp_order_by {
+    id: order_by
+}
+
+"order by variance() on columns of table \"place\""
+input place_variance_order_by {
+    id: order_by
+}
+
+"order by aggregate values of table \"profile\""
+input profile_aggregate_order_by {
+    avg: profile_avg_order_by
+    count: order_by
+    max: profile_max_order_by
+    min: profile_min_order_by
+    stddev: profile_stddev_order_by
+    stddev_pop: profile_stddev_pop_order_by
+    stddev_samp: profile_stddev_samp_order_by
+    sum: profile_sum_order_by
+    var_pop: profile_var_pop_order_by
+    var_samp: profile_var_samp_order_by
+    variance: profile_variance_order_by
+}
+
+"input type for inserting array relation for remote table \"profile\""
+input profile_arr_rel_insert_input {
+    data: [profile_insert_input!]!
+    on_conflict: profile_on_conflict
+}
+
+"order by avg() on columns of table \"profile\""
+input profile_avg_order_by {
+    id: order_by
+}
+
+"Boolean expression to filter rows from the table \"profile\". All fields are combined with a logical 'AND'."
+input profile_bool_exp {
+    _and: [profile_bool_exp]
+    _not: profile_bool_exp
+    _or: [profile_bool_exp]
+    auth0_id: text_comparison_exp
+    id: integer_comparison_exp
+    meals: meal_bool_exp
+    username: text_comparison_exp
+}
+
+"input type for incrementing integer columne in table \"profile\""
+input profile_inc_input {
+    id: Int
+}
+
+"input type for inserting data into table \"profile\""
+input profile_insert_input {
+    auth0_id: String
+    id: Int
+    meals: meal_arr_rel_insert_input
+    username: String
+}
+
+"order by max() on columns of table \"profile\""
+input profile_max_order_by {
+    auth0_id: order_by
+    id: order_by
+    username: order_by
+}
+
+"order by min() on columns of table \"profile\""
+input profile_min_order_by {
+    auth0_id: order_by
+    id: order_by
+    username: order_by
+}
+
+"input type for inserting object relation for remote table \"profile\""
+input profile_obj_rel_insert_input {
+    data: profile_insert_input!
+    on_conflict: profile_on_conflict
+}
+
+"on conflict condition type for table \"profile\""
+input profile_on_conflict {
+    constraint: profile_constraint!
+    update_columns: [profile_update_column!]!
+}
+
+"ordering options when selecting data from \"profile\""
+input profile_order_by {
+    auth0_id: order_by
+    id: order_by
+    meals_aggregate: meal_aggregate_order_by
+    username: order_by
+}
+
+"input type for updating data in table \"profile\""
+input profile_set_input {
+    auth0_id: String
+    id: Int
+    username: String
+}
+
+"order by stddev() on columns of table \"profile\""
+input profile_stddev_order_by {
+    id: order_by
+}
+
+"order by stddev_pop() on columns of table \"profile\""
+input profile_stddev_pop_order_by {
+    id: order_by
+}
+
+"order by stddev_samp() on columns of table \"profile\""
+input profile_stddev_samp_order_by {
+    id: order_by
+}
+
+"order by sum() on columns of table \"profile\""
+input profile_sum_order_by {
+    id: order_by
+}
+
+"order by var_pop() on columns of table \"profile\""
+input profile_var_pop_order_by {
+    id: order_by
+}
+
+"order by var_samp() on columns of table \"profile\""
+input profile_var_samp_order_by {
+    id: order_by
+}
+
+"order by variance() on columns of table \"profile\""
+input profile_variance_order_by {
+    id: order_by
+}
+
+"expression to compare columns of type text. All fields are combined with logical 'AND'."
+input text_comparison_exp {
+    _eq: String
+    _gt: String
+    _gte: String
+    _ilike: String
+    _in: [String]
+    _is_null: Boolean
+    _like: String
+    _lt: String
+    _lte: String
+    _neq: String
+    _nilike: String
+    _nin: [String]
+    _nlike: String
+    _nsimilar: String
+    _similar: String
+}

@@ -1,0 +1,1 @@
+export const TOKEN_LABEL = 'GRABALUNCH_AUTH0_TOKEN';
